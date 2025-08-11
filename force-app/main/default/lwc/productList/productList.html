@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Smartphone Products">
+        <template if:true={products}>
+            <div class="card-grid">
+                <template for:each={products} for:item="product">
+                    <div class="product-card" key={product.Id}>
+                        <div class="product-header">
+                            <span class="product-title">{product.Name}</span>
+                        </div>
+                        <div class="product-body">
+                            <p><b>Description:</b> {product.Description}</p>
+                            <p><b>Product Code:</b> {product.ProductCode}</p>
+                            <p><b>SKU:</b> {product.StockKeepingUnit}</p>
+                            
+                            <p><b>Active:</b> {activeLabel}</p> 
+                            <lightning-formatted-text value={product.IsActive}></lightning-formatted-text></p>
+                            <lightning-button
+                            label="Add to Opportunity"
+                            variant="brand"
+                            data-id={product.Id}
+                            onclick={handleAddToOpportunity}>
+                        </lightning-button>
+                        </div>
+                        
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+</template>

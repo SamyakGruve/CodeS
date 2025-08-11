@@ -1,0 +1,85 @@
+/* --------------------------------------------------------
+   Sales Forecast Tracker – complete styling with themes
+   ----------------------------------------------------- */
+
+/* Base layout -------------------------------------------------- */
+:host { display:block; }
+.lightning-card.slds-card { width:100%; max-width:100%; }
+
+/* Responsive spacing around the combobox */
+@media (min-width:64rem) {             /* ≥1,024px */
+    .slds-m-around_medium { margin:0 1rem 1rem 1rem; }
+}
+
+/* Datatable tweaks ------------------------------------------- */
+
+/* Zebra striping */
+lightning-datatable tr:nth-child(even) td { background:#fafafa; }
+
+/* Sticky column headers */
+lightning-datatable thead th {
+    position:sticky; top:0; z-index:5;
+    background:#f3f3f3; border-bottom:1px solid #d8dde6;
+}
+
+/* Border + rounded corners */
+lightning-datatable { border:1px solid #d8dde6; border-radius:.25rem; overflow:hidden; }
+
+/* Right-align numeric columns */
+td[data-label*="Revenue"],
+td[data-label*="Forecast"],
+td[data-label*="Amount"] { text-align:right; }
+
+/* Forecast summary block ------------------------------------- */
+.summary-block { border-top:1px solid #d8dde6; padding-top:.75rem; }
+.summary-block h3   { margin:0 0 .5rem 0; }
+.summary-block p    { margin:.125rem 0; font-size:.875rem; }
+.summary-block b    { color:#032d60; font-weight:600; }
+
+/* Highlight total row */
+tr.total-row td { font-weight:600; background:#f3f3f3; }
+
+/* Dark-mode adaptation --------------------------------------- */
+@media (prefers-color-scheme:dark) {
+    lightning-datatable tr:nth-child(even) td { background:#262626; }
+    lightning-datatable thead th {
+        background:#2b2b2b; color:#ececec; border-bottom:1px solid #3e3e3e;
+    }
+    .summary-block       { border-color:#3e3e3e; }
+    .summary-block b     { color:#7dc1ff; }
+    tr.total-row td      { background:#2b2b2b; }
+}
+
+/* -----------------------------------------------------------------
+   THEME SWITCHER
+   Add one of these classes to <lightning-card> for a quick
+   background change without touching component logic.
+   ----------------------------------------------------------------- */
+
+/* 1. Brand (Salesforce blue) ----------------------------------- */
+.lightning-card.theme-brand {
+    background:#0176d3;          /* brand background */
+    color:#fff;                  /* invert text */
+}
+.lightning-card.theme-brand lightning-datatable thead th {
+    background:#015cb4; color:#fff;
+}
+.lightning-card.theme-brand tr.total-row td { background:#015cb4; }
+
+/* 2. Neutral (subtle gray) ------------------------------------- */
+.lightning-card.theme-neutral { background:#f8f9f9; }  /* light gray */
+.lightning-card.theme-neutral lightning-datatable thead th { background:#e5e7e9; }
+.lightning-card.theme-neutral tr.total-row td { background:#e5e7e9; }
+
+/* 3. Dark (override dark-mode preference) ---------------------- */
+.lightning-card.theme-dark {
+    background:#1e1e1e; color:#f5f5f5;
+}
+.lightning-card.theme-dark lightning-datatable thead th {
+    background:#333; color:#f5f5f5; border-bottom:1px solid #444;
+}
+.lightning-card.theme-dark tr.total-row td { background:#333; }
+
+/* Ensure links & buttons stay legible in themed cards */
+.lightning-card.theme-brand a,
+.lightning-card.theme-dark a { color:#ffd45c; }

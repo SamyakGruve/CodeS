@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Opportunity Forecast Dashboard" icon-name="standard:opportunity">
+        <div class="slds-p-horizontal_medium slds-p-vertical_small">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3">
+                    <lightning-combobox
+                        name="fiscalYear"
+                        label="Fiscal Year"
+                        value={selectedYear}
+                        options={yearOptions}
+                        placeholder="Select Year"
+                        onchange={handleYearChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3">
+                    <lightning-combobox
+                        name="fiscalQuarter"
+                        label="Fiscal Quarter"
+                        value={selectedQuarter}
+                        options={quarterOptions}
+                        placeholder="All"
+                        onchange={handleQuarterChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <lightning-datatable
+                key-field="bucketName"
+                data={tableData}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <div class="metric">
+                <div class="label">Forecast Accuracy %</div>
+                <div class="value">{forecastAccuracyDisplay}</div>
+            </div>
+            <div class="submetrics">
+                <div>Closed Won Amount: <lightning-formatted-number value={closedWonAmount} format-style="currency"></lightning-formatted-number></div>
+                <div>Total Forecasted Revenue: <lightning-formatted-number value={totalForecastedAmount} format-style="currency"></lightning-formatted-number></div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

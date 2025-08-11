@@ -1,0 +1,124 @@
+/* productCard.css */
+
+/* Styling for the main lightning-card container */
+:host {
+    display: block; /* Ensures the host element takes up its own space */
+    padding: 1rem;
+    background-color: #f8f8f8; /* Light background for the component area */
+    border-radius: 0.75rem; /* Rounded corners for the entire card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 1rem; /* Add some margin around the component */
+}
+
+/* Container for the product cards, using CSS Grid for responsiveness */
+.card-container {
+    display: grid;
+    /* Responsive grid:
+       - auto-fit: allows columns to fit as many items as possible.
+       - minmax(280px, 1fr): each column will be at least 280px wide,
+         but can grow to take up available space equally.
+       Adjust 280px if you want larger/smaller minimum card width. */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; /* Space between the cards */
+    padding: 1rem;
+    max-height: 600px; /* Limit the height of the product list */
+    overflow-y: auto; /* Add vertical scroll if content exceeds max-height */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    border-radius: 0.5rem; /* Rounded corners for the scrollable area */
+    background-color: #ffffff; /* White background for the product grid */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
+}
+
+/* Styling for individual product cards */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.75rem; /* More rounded corners for individual cards */
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow for cards */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effects */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push button to the bottom */
+    text-align: center; /* Center align text within the card */
+    min-height: 250px; /* Ensure a consistent minimum height for cards */
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Typography for product names */
+.card h3 {
+    font-size: 1.4rem; /* Larger font for product name */
+    color: #0070d2; /* Salesforce blue for headings */
+    margin-bottom: 0.75rem;
+    font-weight: 600; /* Semi-bold */
+}
+
+/* Typography for price and description */
+.card p {
+    font-size: 0.95rem;
+    color: #555555;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    flex-grow: 1; /* Allow description to take available space */
+}
+
+.card p strong {
+    color: #333333;
+}
+
+/* Margin for the button to separate it from description */
+.card lightning-button {
+    margin-top: 1rem; /* Space above the button */
+}
+
+/* Error message styling */
+.slds-text-color_error {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1rem;
+    color: #c23934; /* Salesforce error red */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller cards on tablets */
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+        min-height: 220px; /* Adjust min-height for smaller screens */
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Single column on mobile phones */
+        padding: 0.5rem;
+    }
+
+    .card {
+        padding: 1.2rem;
+        min-height: 200px; /* Further adjust min-height for mobile */
+    }
+
+    :host {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+}

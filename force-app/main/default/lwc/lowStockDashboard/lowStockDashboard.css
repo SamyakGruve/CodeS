@@ -1,0 +1,63 @@
+:host {
+    display: block;
+    padding: 1.5rem;
+    font-size: 1.25rem; /* Make content bigger */
+}
+
+/* Style the list */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #d8dde6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.15em; /* Increase size within list */
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+strong {
+    font-weight: 700;
+    color: #16325c;
+    font-size: 1.15em;
+}
+
+/* Highlight stock in red and threshold in green */
+.stock-value {
+    color: #c23934; /* SLDS error (red) */
+    font-weight: 600;
+    margin-left: 0.5em;
+}
+
+.threshold-value {
+    color: #04844b; /* SLDS success (green) */
+    font-weight: 600;
+    margin-left: 0.5em;
+}
+
+/* Paragraph for no low stock products */
+p {
+    font-size: 1.1em;
+    color: #54698d;
+}
+
+/* Error message styling */
+p.slds-text-color_error {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #c23934;
+    margin-top: 1rem;
+}
+
+li:hover {
+    background-color: #ecebea;
+    cursor: default;
+}

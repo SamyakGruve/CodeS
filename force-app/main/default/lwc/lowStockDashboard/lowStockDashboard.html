@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Low Stock Products" icon-name="standard:product">
+        <template if:true={products.data}>
+            <template if:true={products.data.length}>
+                <ul>
+                    <template for:each={products.data} for:item="product">
+                        <li key={product.Id}>
+                        <strong>{product.Name}</strong>
+                        — Stock: <span class="stock-value">{product.Stock__c}</span>,
+                        Threshold: <span class="threshold-value">{product.Threshold__c}</span>
+                    </li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={products.data.length}>
+                <p>All products are above threshold.</p>
+            </template>
+        </template>
+        <template if:true={products.error}>
+            <p class="slds-text-color_error">Error loading low stock products.</p>
+        </template>
+    </lightning-card>
+</template>

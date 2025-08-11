@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Available Mobile Phones">
+        <template if:true={products}>
+            <div class="card-container">
+                <template for:each={products} for:item="prod">
+                    <div key={prod.Id} class="card">
+                        <h3>{prod.Name}</h3>
+                        <p><strong>Price:</strong> ₹{prod.UnitPrice__c}</p>
+                        <p>{prod.Description}</p>
+                        <lightning-button
+                            label="Add to Opportunity"
+                            variant="brand"
+                            onclick={handleAddToOpportunity}
+                            data-id={prod.Id}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+    </lightning-card>
+</template>
